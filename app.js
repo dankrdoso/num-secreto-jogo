@@ -1,4 +1,5 @@
 let listaNumSorteados = [];
+let numeroLimite = 100;
 let numSecreto = sorteioNumSecreto();
 let tentativas = 1;
 
@@ -35,11 +36,17 @@ function verificarChute() {
 }    
 
 function sorteioNumSecreto() {
-    let numSecreto = parseInt(Math.random() * 10 +1);
+    let numSecreto = parseInt(Math.random() * numeroLimite+1);
+    let quantidadeNumLista = listaNumSorteados.length;
+
+    if (quantidadeNumLista == numeroLimite) {
+        listaNumSorteados = [];
+    }
     if (listaNumSorteados.includes(numSecreto)) {
         return sorteioNumSecreto();
     } else {
-        listaNumSorteados.push(numSecreto)
+        listaNumSorteados.push(numSecreto);
+        console.log(listaNumSorteados)
         return numSecreto
     }
 }
